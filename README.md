@@ -2,16 +2,16 @@
 
 <p align="center">
     <img src="http://sven-seyfert.de/media/logo_circle.png" width="80" />
-    <h2 align="center">Welcome to <code>Au3TestFramework</code> !</h2>
+    <h2 align="center">Welcome to <code>Au3TestFramework</code>【ツ】</h2>
 </p>
 
-![license](https://img.shields.io/badge/license-MIT-green.svg?logo=spdx)
-![contributors](https://img.shields.io/github/contributors/Sven-Seyfert/Au3TestFramework.svg?logo=github)
-![repo size](https://img.shields.io/github/repo-size/Sven-Seyfert/Au3TestFramework.svg?logo=github)
-![last commit](https://img.shields.io/github/last-commit/Sven-Seyfert/Au3TestFramework.svg?logo=github)
-![release](https://img.shields.io/github/release/Sven-Seyfert/Au3TestFramework.svg?logo=github)
-![os](https://img.shields.io/badge/os-windows-blueviolet.svg?logo=windows)
-![autoit](https://img.shields.io/badge/autoit-rockz-9cf.svg?logo=visual-studio-code)
+![license](https://img.shields.io/badge/license-MIT-ff69b4.svg?style=flat-square&logo=spdx)
+![contributors](https://img.shields.io/github/contributors/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
+![repo size](https://img.shields.io/github/repo-size/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
+![last commit](https://img.shields.io/github/last-commit/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
+![release](https://img.shields.io/github/release/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
+![os](https://img.shields.io/badge/os-windows-yellow.svg?style=flat-square&logo=windows)
+![editor](https://img.shields.io/badge/editor-VSCode-blueviolet.svg?style=flat-square&logo=visual-studio-code)
 
 [Description](#description) | [Features](#features) | [Getting started](#getting-started) | [Configuration](#configuration) | [Keyboard Shortcuts](#keyboard-shortcuts) | [Tested](#tested) | [Contributing](#contributing)
 
