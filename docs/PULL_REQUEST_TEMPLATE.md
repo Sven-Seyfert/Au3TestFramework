@@ -6,8 +6,8 @@ Describe the big picture of your changes here to communicate to the maintainers 
 
 Put an `x` in the boxes that apply. If you're unsure about any of them, don't hesitate to ask. I'm here to help! This is simply a reminder of what we are going to look for before merging your code.
 
-- [ ] I have read and noticed the [CODE OF CONDUCT](https://github.com/Sven-Seyfert/Au3TestFramework/blob/master/docs/CODE_OF_CONDUCT.md) document
-- [ ] I have read and noticed the [CONTRIBUTING](https://github.com/Sven-Seyfert/Au3TestFramework/blob/master/docs/CONTRIBUTING.md) document
+- [ ] I have read and noticed the [CODE OF CONDUCT](https://github.com/Sven-Seyfert/Au3TestFramework/blob/main/docs/CODE_OF_CONDUCT.md) document
+- [ ] I have read and noticed the [CONTRIBUTING](https://github.com/Sven-Seyfert/Au3TestFramework/blob/main/docs/CONTRIBUTING.md) document
 - [ ] I have added necessary documentation or screenshots (if appropriate)
 
 ## Pull request type

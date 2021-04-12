@@ -4,7 +4,7 @@
 
 ## Preparing
 
-- Please ensure that you have read and noticed the [CODE OF CONDUCT](https://github.com/Sven-Seyfert/Au3TestFramework/blob/master/docs/CODE_OF_CONDUCT.md) document.
+- Please ensure that you have read and noticed the [CODE OF CONDUCT](https://github.com/Sven-Seyfert/Au3TestFramework/blob/main/docs/CODE_OF_CONDUCT.md) document.
 - Please also notice that I try to use some Clean Code aspects for my code. So if it's possible for you, please also keep that in mind, thanks. If you have questions about it, please contact me.
 
 ## Contribution
