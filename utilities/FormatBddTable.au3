@@ -2,8 +2,8 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
 #AutoIt3Wrapper_Outfile_x64=..\build\FormatBddTable.exe
-#AutoIt3Wrapper_Res_Description=FormatBddTable (2020-10-17)
-#AutoIt3Wrapper_Res_Fileversion=0.2
+#AutoIt3Wrapper_Res_Description=FormatBddTable (2021-07-07)
+#AutoIt3Wrapper_Res_Fileversion=0.3
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
