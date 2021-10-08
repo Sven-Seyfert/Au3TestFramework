@@ -24,7 +24,7 @@ Global $aCloseIcon[$iMaxEnumIndex]
        $aCloseIcon[$eYPosition]        = $aGui[$eBorderSize] + 1
        $aCloseIcon[$eWidth]            = 40
        $aCloseIcon[$eHeight]           = 27
-       $aCloseIcon[$eLabelText]        = Chr( 206 )
+       $aCloseIcon[$eLabelText]        = Chr(206)
        $aCloseIcon[$eFontColor]        = 0xFFFFFF
        $aCloseIcon[$eHoverColor]       = 0xD51324
 
@@ -33,7 +33,7 @@ Global $aThemeIcon[$iMaxEnumIndex]
        $aThemeIcon[$eYPosition]        = $aGui[$eBorderSize] + 1
        $aThemeIcon[$eWidth]            = 40
        $aThemeIcon[$eHeight]           = 27
-       $aThemeIcon[$eLabelText]        = Chr( 82 )
+       $aThemeIcon[$eLabelText]        = Chr(82)
        $aThemeIcon[$eHoverColor]       = 0x383B41
 
 Global $aMoveIcon[$iMaxEnumIndex]
@@ -41,7 +41,7 @@ Global $aMoveIcon[$iMaxEnumIndex]
        $aMoveIcon[$eYPosition]         = $aGui[$eBorderSize] + 1
        $aMoveIcon[$eWidth]             = 40
        $aMoveIcon[$eHeight]            = 27
-       $aMoveIcon[$eLabelText]         = Chr( 177 )
+       $aMoveIcon[$eLabelText]         = Chr(177)
        $aMoveIcon[$eHoverColor]        = 0x383B41
 
 Global $aHeadline[$iMaxEnumIndex]

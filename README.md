@@ -17,7 +17,9 @@
 
 ## Description
 
-Au3TestFramework is a set of tools which act as a BDD driven Test Framework similar to SpecFlow/Cucumber (Gherkin syntax). The framework will contain four parts of a BDD driven testautomation approach. 1. Specification (for the specs), 2. Capturing (for the page objects), 3. Creation (the au3 test glue code) and 4. Execution (for the test execution). At the moment there is no stable version because the project is still in construction and in implementation phase.
+Au3TestFramework is a set of tools which act as a BDD driven Test Framework similar to SpecFlow/Cucumber (Gherkin syntax). The framework will contain four parts of a BDD driven testautomation approach. 1. Specification (for the specs), 2. Capturing (for the page objects), 3. Creation (the au3 test glue code) and 4. Execution (for the test execution).
+
+**At the moment there is no stable version because the project is still in construction and in implementation phase.**
 
 ## Features
 

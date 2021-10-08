@@ -28,11 +28,11 @@ Please execute the following function and copy the console result here.
 
 ``` au3
 Func _getSystemInfos()
-    ConsoleWrite( '@AutoItExe:      ' & @AutoItExe     & @CRLF )
-    ConsoleWrite( '@AutoItVersion:  ' & @AutoItVersion & @CRLF )
-    ConsoleWrite( '@CPUArch:        ' & @CPUArch       & @CRLF )
-    ConsoleWrite( '@OSArch:         ' & @OSArch        & @CRLF )
-    ConsoleWrite( '@OSVersion:      ' & @OSVersion     & @CRLF )
+    ConsoleWrite('@AutoItExe:      ' & @AutoItExe     & @CRLF)
+    ConsoleWrite('@AutoItVersion:  ' & @AutoItVersion & @CRLF)
+    ConsoleWrite('@CPUArch:        ' & @CPUArch       & @CRLF)
+    ConsoleWrite('@OSArch:         ' & @OSArch        & @CRLF)
+    ConsoleWrite('@OSVersion:      ' & @OSVersion     & @CRLF)
 EndFunc
 _getSystemInfos()
 ```
