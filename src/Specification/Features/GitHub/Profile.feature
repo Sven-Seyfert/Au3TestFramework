@@ -29,7 +29,7 @@ Scenario: Login works
 Scenario: Profile data is correct
     When I choose 'Your profile' from the user menu
     Then I am on page '/Sven-Seyfert'
-    And the personal bio text 'Hi, I am Sven, a software test engineer specializing in test automation. Private I am a husband, father, friend, son, IT geek and very involved.' is correct
+    And the personal bio text 'Hi, I am Sven (SOLVE SMART), a software test engineer with focus in test automation. Private I am a husband, father, friend, son, IT geek and very involved.' is correct
 
 
 
@@ -38,12 +38,12 @@ Scenario: Profile data is editable
     When I choose 'Edit profile'
     And fill the profile specific fields with
 
-    | bio text         | Hi, I am Sven, a software test engineer specializing in test automation. Private I am a husband, father, friend, son, IT geek and very involved. |
-    | company          |                                                                                                                                                 |
-    | location         | Germany                                                                                                                                         |
-    | email            | info@sven-seyfert.de                                                                                                                            |
-    | website          | http://sven-seyfert.de/                                                                                                                         |
-    | twitter username | Sven_Seyfert                                                                                                                                    |
+    | bio text         | Hi, I am Sven (SOLVE SMART), a software test engineer with focus in test automation. Private I am a husband, father, friend, son, IT geek and very involved. |
+    | company          |                                                                                                                                                              |
+    | location         | Germany                                                                                                                                                      |
+    | email            | info@sven-seyfert.de                                                                                                                                         |
+    | website          | http://sven-seyfert.de/                                                                                                                                      |
+    | twitter username | Sven_Seyfert                                                                                                                                                 |
 
     Then I am on page '/Sven-Seyfert'
-    And the personal bio text 'Hi, I am Sven, a software test engineer specializing in test automation. Private I am a husband, father, friend, son, IT geek and very involved.' is correct
+    And the personal bio text 'Hi, I am Sven (SOLVE SMART), a software test engineer with focus in test automation. Private I am a husband, father, friend, son, IT geek and very involved.' is correct
