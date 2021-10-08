@@ -3,7 +3,7 @@
 #AutoIt3Wrapper_Icon=..\..\..\media\favicon.ico
 #AutoIt3Wrapper_Outfile_x64=..\..\..\build\StepsGenerator.exe
 #AutoIt3Wrapper_Res_Description=StepsGenerator (2021-10-08)
-#AutoIt3Wrapper_Res_Fileversion=0.9.0
+#AutoIt3Wrapper_Res_Fileversion=0.9.1
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
@@ -194,7 +194,7 @@ Func _addParametersForFunction($iParameterCount, $sStepName)
         $sStepName &= '$sParam' & $i & ', '
     Next
 
-    Return ($iParameterCount == 0) ? (StringTrimRight($sStepName, 1) & ')') : (StringTrimRight($sStepName, 2) & ')')
+    Return ($iParameterCount == 0) ? ($sStepName & ')') : (StringTrimRight($sStepName, 2) & ')')
 EndFunc
 
 Func _addTableParameterForFunctions($aStepsFunctionsList)
@@ -207,7 +207,7 @@ Func _addTableParameterForFunctions($aStepsFunctionsList)
             $bIsTable = True
         Else
             If $bIsTable Then
-                Local $sParamsRegExPattern = '(\$sParam\d+) \)'
+                Local $sParamsRegExPattern = '(\$sParam\d+)\)'
                 Local $sRegExReplace       = '$1, $aTable)'
 
                 $aStepsFunctionsList[$i] = StringRegExpReplace($aStepsFunctionsList[$i], $sParamsRegExPattern, $sRegExReplace)

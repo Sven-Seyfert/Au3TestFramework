@@ -3,7 +3,7 @@
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
 #AutoIt3Wrapper_Outfile_x64=..\build\FormatBddTable.exe
 #AutoIt3Wrapper_Res_Description=FormatBddTable (2021-10-08)
-#AutoIt3Wrapper_Res_Fileversion=0.9.0
+#AutoIt3Wrapper_Res_Fileversion=0.9.1
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
 
