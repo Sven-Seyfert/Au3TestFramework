@@ -49,24 +49,24 @@ Global $aHeadline[$iMaxEnumIndex]
        $aHeadline[$eYPosition]         = 45
        $aHeadline[$eWidth]             = $aGui[$eWidthLabel]
        $aHeadline[$eHeight]            = 40
-       $aHeadline[$eLabelText]         = 'Add a feature file'
+       $aHeadline[$eLabelText]         = $aTexts[$eLabelHeadline]
 
 Global $aSubHeadline[$iMaxEnumIndex]
        $aSubHeadline[$eXPosition]      = 40
        $aSubHeadline[$eYPosition]      = 100
        $aSubHeadline[$eWidth]          = $aGui[$eWidthLabel]
        $aSubHeadline[$eHeight]         = 30
-       $aSubHeadline[$eLabelText]      = 'Enter a feature name'
+       $aSubHeadline[$eLabelText]      = $aTexts[$eLabelSubHeadline]
 
 Global $aInputFeatureName[$iMaxEnumIndex]
        $aInputFeatureName[$eXPosition] = 40
        $aInputFeatureName[$eYPosition] = 150
        $aInputFeatureName[$eWidth]     = $aGui[$eWidthLabel]
        $aInputFeatureName[$eHeight]    = 50
-       $aInputFeatureName[$eLabelText] = 'Feature name'
+       $aInputFeatureName[$eLabelText] = $aTexts[$eInputFeatureName]
 
-Global $aButtonOkay[$iMaxEnumIndex]
-       $aButtonOkay[$eXPosition]       = $aGui[$eWidth] - 150
-       $aButtonOkay[$eYPosition]       = $aGui[$eHeight] - 75
-       $aButtonOkay[$eWidth]           = 105
-       $aButtonOkay[$eHeight]          = 32
+Global $aButtonAdd[$iMaxEnumIndex]
+       $aButtonAdd[$eXPosition]        = $aGui[$eWidth] - 150
+       $aButtonAdd[$eYPosition]        = $aGui[$eHeight] - 75
+       $aButtonAdd[$eWidth]            = 105
+       $aButtonAdd[$eHeight]           = 32

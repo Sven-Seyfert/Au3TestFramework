@@ -1,3 +1,16 @@
+Func _createRandomText($iLength = 10)
+    Local $sText = ''
+
+    Dim $aChr[2]
+    For $i = 1 To $iLength Step 1
+        $aChr[0] = Chr(Random(65, 90, 1))  ; A-Z
+        $aChr[1] = Chr(Random(97, 122, 1)) ; a-z
+        $sText  &= $aChr[Random(0, 1, 1)]
+    Next
+
+    Return $sText
+EndFunc
+
 Func _guiFadeIn($hGui, $iSleep = 10)
     For $i = 0 To 255 Step 5
         WinSetTrans($hGui, '', $i)
@@ -38,25 +51,9 @@ Func _isMouseOnControl($iXMouse, $iYMouse, $iXControl, $iYControl, $iWidthContro
     EndIf
 EndFunc
 
-Func _setBorderColor($aControl, $vBorderColor)
-    GUICtrlSetBkColor($aControl[$eBorderTop], $vBorderColor)
-    GUICtrlSetBkColor($aControl[$eBorderRight], $vBorderColor)
-    GUICtrlSetBkColor($aControl[$eBorderBottom], $vBorderColor)
-    GUICtrlSetBkColor($aControl[$eBorderLeft], $vBorderColor)
-EndFunc
-
 Func _setControlFocusWithoutSelectedText($cControl)
     GUICtrlSetState($cControl, $GUI_FOCUS)
     ControlClick($aGui[$eHandle], '', $cControl)
-EndFunc
-
-Func _hexColorInvert($vHexCode)
-    Return '0x' & Hex (0xFFFFFF - $vHexCode, 6)
-EndFunc
-
-Func _setThemeColor($vColor, $bShouldInvert = False)
-    If Not $bShouldInvert Then Return $bIsDarkModeActive ? $vColor : _hexColorInvert($vColor)
-    If $bShouldInvert     Then Return $bIsDarkModeActive ? _hexColorInvert($vColor) : $vColor
 EndFunc
 
 Func _hoverMoveIcon()
@@ -72,7 +69,7 @@ Func _hoverThemeIcon()
 EndFunc
 
 Func _hoverButtonOkay()
-    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aButtonOkay[$eXPosition], $aButtonOkay[$eYPosition], $aButtonOkay[$eWidth], $aButtonOkay[$eHeight])
+    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aButtonAdd[$eWidth], $aButtonAdd[$eHeight])
 EndFunc
 
 Func _hoverActions()
@@ -96,16 +93,16 @@ Func _hoverActions()
                 GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aMoveIcon[$eHoverColor], True))
 
             Case _hoverButtonOkay()
-                GUICtrlSetBkColor($aButtonOkay[$eBorderTop], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonOkay[$eBorderRight], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonOkay[$eBorderBottom], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonOkay[$eBorderLeft], _setThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _setThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _setThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _setThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _setThemeColor($aColor[$eBorderInput], True))
 
             Case Else
                 _resetCloseIconColor()
                 _resetThemeIconColor()
                 _resetMoveIconColor()
-                _resetBorderColorButtonOkay()
+                _resetBorderColorButtonAdd()
         EndSelect
     EndIf
 EndFunc
@@ -126,9 +123,9 @@ Func _resetMoveIconColor()
     GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eBackground], True))
 EndFunc
 
-Func _resetBorderColorButtonOkay()
-    GUICtrlSetBkColor($aButtonOkay[$eBorderTop], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonOkay[$eBorderRight], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonOkay[$eBorderBottom], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonOkay[$eBorderLeft], _setThemeColor($aColor[$eBorder], True))
+Func _resetBorderColorButtonAdd()
+    GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _setThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _setThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _setThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _setThemeColor($aColor[$eBorder], True))
 EndFunc

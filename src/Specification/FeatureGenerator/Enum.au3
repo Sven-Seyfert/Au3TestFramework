@@ -9,6 +9,7 @@ Global Enum _
     $eBorderRight, _
     $eBorderSize, _
     $eBorderTop, _
+    $eButtonAdd, _
     $eFont, _
     $eFontColor, _
     $eHandle, _
@@ -16,7 +17,10 @@ Global Enum _
     $eHoverColor, _
     $eIcon, _
     $eInput, _
+    $eInputFeatureName, _
     $eLabel, _
+    $eLabelHeadline, _
+    $eLabelSubHeadline, _
     $eLabelText, _
     $eWidth, _
     $eWidthLabel, _

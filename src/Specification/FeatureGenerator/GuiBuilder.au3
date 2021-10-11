@@ -6,7 +6,7 @@ Func _showGui()
     _guiHeadline()
     _guiSubHeadline()
     _guiInputFeatureName()
-    _guiButtonOkay()
+    _guiButtonAdd()
 
     _guiApplyTheme()
 
@@ -83,19 +83,19 @@ Func _guiInputFeatureName()
     _setControlFocusWithoutSelectedText($aInputFeatureName[$eInput])
 EndFunc
 
-Func _guiButtonOkay()
-    $aButtonOkay[$eBackground] = GUICtrlCreateLabel('', $aButtonOkay[$eXPosition], $aButtonOkay[$eYPosition], $aButtonOkay[$eWidth], $aButtonOkay[$eHeight])
-    $aButtonOkay[$eLabel]      = GUICtrlCreateLabel('Add', $aButtonOkay[$eXPosition] + 40, $aButtonOkay[$eYPosition] + 6, Default, Default)
+Func _guiButtonAdd()
+    $aButtonAdd[$eBackground] = GUICtrlCreateLabel('', $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aButtonAdd[$eWidth], $aButtonAdd[$eHeight])
+    $aButtonAdd[$eLabel]      = GUICtrlCreateLabel($aTexts[$eButtonAdd], $aButtonAdd[$eXPosition] + 40, $aButtonAdd[$eYPosition] + 6, Default, Default)
 
     Local Const $iCursorIdHand = 0
 
-    GUICtrlSetCursor($aButtonOkay[$eBackground], $iCursorIdHand)
-    GUICtrlSetFont($aButtonOkay[$eLabel], 11)
+    GUICtrlSetCursor($aButtonAdd[$eBackground], $iCursorIdHand)
+    GUICtrlSetFont($aButtonAdd[$eLabel], 11)
 
-    $aButtonOkay[$eBorderTop]    = GUICtrlCreateLabel('', $aButtonOkay[$eXPosition], $aButtonOkay[$eYPosition], $aButtonOkay[$eWidth], $aGui[$eBorderSize])
-    $aButtonOkay[$eBorderRight]  = GUICtrlCreateLabel('', $aButtonOkay[$eXPosition] + $aButtonOkay[$eWidth] - $aGui[$eBorderSize], $aButtonOkay[$eYPosition], $aGui[$eBorderSize], $aButtonOkay[$eHeight])
-    $aButtonOkay[$eBorderBottom] = GUICtrlCreateLabel('', $aButtonOkay[$eXPosition], $aButtonOkay[$eYPosition] + $aButtonOkay[$eHeight] - $aGui[$eBorderSize], $aButtonOkay[$eWidth], $aGui[$eBorderSize])
-    $aButtonOkay[$eBorderLeft]   = GUICtrlCreateLabel('', $aButtonOkay[$eXPosition], $aButtonOkay[$eYPosition], $aGui[$eBorderSize], $aButtonOkay[$eHeight])
+    $aButtonAdd[$eBorderTop]    = GUICtrlCreateLabel('', $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aButtonAdd[$eWidth], $aGui[$eBorderSize])
+    $aButtonAdd[$eBorderRight]  = GUICtrlCreateLabel('', $aButtonAdd[$eXPosition] + $aButtonAdd[$eWidth] - $aGui[$eBorderSize], $aButtonAdd[$eYPosition], $aGui[$eBorderSize], $aButtonAdd[$eHeight])
+    $aButtonAdd[$eBorderBottom] = GUICtrlCreateLabel('', $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition] + $aButtonAdd[$eHeight] - $aGui[$eBorderSize], $aButtonAdd[$eWidth], $aGui[$eBorderSize])
+    $aButtonAdd[$eBorderLeft]   = GUICtrlCreateLabel('', $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aGui[$eBorderSize], $aButtonAdd[$eHeight])
 EndFunc
 
 Func _guiApplyTheme()
@@ -108,66 +108,4 @@ Func _guiApplyTheme()
     _applyThemeInputFeatureName()
     _applyThemeButtonOkay()
     _themeToggle()
-EndFunc
-
-Func _applyThemeGui()
-    GUISetBkColor(_setThemeColor($aColor[$eBackground]), $aGui[$eHandle])
-    _setBorderColor($aGui, _setThemeColor($aColor[$eBorder]))
-EndFunc
-
-Func _applyThemeCloseIcon()
-    GUICtrlSetBkColor($aCloseIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
-EndFunc
-
-Func _applyThemeThemeIcon()
-    GUICtrlSetBkColor($aThemeIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aThemeIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aThemeIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
-EndFunc
-
-Func _applyMoveThemeIcon()
-    GUICtrlSetBkColor($aMoveIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
-EndFunc
-
-Func _applyThemeHeadline()
-    GUICtrlSetColor($aHeadline[$eLabel], _setThemeColor($aColor[$eFont]))
-EndFunc
-
-Func _applyThemeSubHeadline()
-    GUICtrlSetColor($aSubHeadline[$eLabel], _setThemeColor($aColor[$eFont]))
-EndFunc
-
-Func _applyThemeInputFeatureName()
-    GUICtrlSetBkColor($aInputFeatureName[$eBackground], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetBkColor($aInputFeatureName[$eInput], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetColor($aInputFeatureName[$eLabel], _setThemeColor($aColor[$eFont]))
-    GUICtrlSetColor($aInputFeatureName[$eInput], _setThemeColor($aColor[$eFont]))
-    _setBorderColor($aInputFeatureName, _setThemeColor($aColor[$eBorderInput]))
-EndFunc
-
-Func _applyThemeButtonOkay()
-    GUICtrlSetBkColor($aButtonOkay[$eBackground], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetBkColor($aButtonOkay[$eLabel], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetColor($aButtonOkay[$eLabel], _setThemeColor($aColor[$eFont]))
-    _setBorderColor($aButtonOkay, _setThemeColor($aColor[$eBorder]))
-EndFunc
-
-Func _themeToggle()
-    If $bIsDarkModeActive Then
-        GUICtrlSetData($aThemeIcon[$eLabel], Chr(82))
-        GUICtrlSetFont($aThemeIcon[$eLabel], 17, 500, Default, 'WingDings')
-        GUICtrlSetPos($aThemeIcon[$eLabel], $aThemeIcon[$eXPosition] + 10, $aThemeIcon[$eYPosition] + 1)
-
-        $bIsDarkModeActive = False
-    Else
-        GUICtrlSetData($aThemeIcon[$eLabel], Chr(131))
-        GUICtrlSetFont($aThemeIcon[$eLabel], 15, 500, Default, 'WingDings 2')
-        GUICtrlSetPos($aThemeIcon[$eLabel], $aThemeIcon[$eXPosition] + 13, $aThemeIcon[$eYPosition] + 4)
-
-        $bIsDarkModeActive = True
-    EndIf
 EndFunc

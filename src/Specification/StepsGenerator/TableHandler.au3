@@ -1,10 +1,13 @@
+Func _getCount($aList)
+    Return UBound($aList) - 1
+EndFunc
+
 Func _removeEmptyLinesFromList($aList)
     _ArrayDelete($aList, 0)
 
     Local $sOnlySpacesOrTabsTillLineEndRegExPattern = '^\s+$'
-    Local $iArrayCount = UBound($aList) - 1
 
-    For $i = $iArrayCount To 0 Step - 1
+    For $i = _getCount($aList) To 0 Step - 1
         If $aList[$i] = '' Or StringRegExp($aList[$i], $sOnlySpacesOrTabsTillLineEndRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -15,9 +18,8 @@ EndFunc
 
 Func _removeTagsFromList($aList)
     Local $sTagsRegExPattern = '^\s+@|^@\w+'
-    Local $iArrayCount = UBound($aList) - 1
 
-    For $i = $iArrayCount To 0 Step - 1
+    For $i = _getCount($aList) To 0 Step - 1
         If StringRegExp($aList[$i], $sTagsRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -27,10 +29,9 @@ Func _removeTagsFromList($aList)
 EndFunc
 
 Func _removeDoubleWhitespacesFromList($aList)
-    Local $iArrayCount = UBound($aList) - 1
     Local Const $iLeadingTrailingAndDoubleWhitespaces = 7
 
-    For $i = $iArrayCount To 0 Step - 1
+    For $i = _getCount($aList) To 0 Step - 1
         $aList[$i] = StringStripWS($aList[$i], $iLeadingTrailingAndDoubleWhitespaces)
     Next
 
@@ -39,9 +40,8 @@ EndFunc
 
 Func _removeScenarioTitleFromList($aList)
     Local $sScenarioTitleRegExPattern = 'Scenario:.+?$'
-    Local $iArrayCount = UBound($aList) - 1
 
-    For $i = $iArrayCount To 0 Step - 1
+    For $i = _getCount($aList) To 0 Step - 1
         If StringRegExp($aList[$i], $sScenarioTitleRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -58,9 +58,9 @@ Func _removeDuplicateSteps($aList)
     Return $aList
 EndFunc
 
-Func _removeDuplicateStepsFunctions($aStepsFunctionsList)
-    $aStepsFunctionsList = _ArrayUnique($aStepsFunctionsList)
-    _ArrayDelete($aStepsFunctionsList, 0)
+Func _removeDuplicateStepsFunctions($aList)
+    $aList = _ArrayUnique($aList)
+    _ArrayDelete($aList, 0)
 
-    Return $aStepsFunctionsList
+    Return $aList
 EndFunc
