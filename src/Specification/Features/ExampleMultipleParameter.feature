@@ -1,6 +1,6 @@
-Feature: Example3
+Feature: Example Multiple Parameter
     As Software Test Engineer,
-    I want to test the "Example3" actions and their behavior,
+    I want to test the "Example Multiple Parameter" actions and their behavior,
     for the benefit to ensure a valid, automatically verified and stable functionality.
 
 

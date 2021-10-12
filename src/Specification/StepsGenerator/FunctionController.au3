@@ -1,9 +1,9 @@
 Func _createStepsWrapperFunctionsFile()
-    Local $aFeatureFileList = _getFeatureFiles()
+    Local $aFeatureFileList = _getListOfFiles('Features', '.feature')
 
     If Not IsArray($aFeatureFileList) Then
-        MsgBox(48, $aTexts[$eMessageWarning], $aTexts[$eMessageNoFeatureFileFound] & @CRLF & @CRLF & _
-            'Folder: *\Features\')
+        MsgBox(48, $aTexts[$eMessageTitleNote], $aTexts[$eMessageNoFeatureFileFound] & @CRLF & @CRLF & _
+            'Folder:' & @CRLF & '*\Features\')
 
         Return False
     EndIf
@@ -14,17 +14,17 @@ Func _createStepsWrapperFunctionsFile()
         Local $aAllStepsList       = _getAllStepsOfFeature($sFeatureFileContent & $sEndOfFileMark)
 
         If Not IsArray($aAllStepsList) And $aAllStepsList == -1 Then
-            MsgBox(48, $aTexts[$eMessageWarning], $aTexts[$eMessageWrongStructure] & @CRLF & @CRLF & _
-                'File: ' & $aFeatureFileList[$i])
+            MsgBox(48, $aTexts[$eMessageTitleWrongStructure], $aTexts[$eMessageWrongStructure] & @CRLF & @CRLF & _
+                'File:' & @CRLF & $aFeatureFileList[$i])
             ContinueLoop
         EndIf
 
         Local $aStepsFunctionsList = _getStepsFunctions($aAllStepsList)
 
         If Not IsArray($aStepsFunctionsList) Then
-            MsgBox(48, $aTexts[$eMessageWarning], $aTexts[$eMessageInvalidSingleQuoteSignCount] & @CRLF & @CRLF & _
-                'File:' & $aFeatureFileList[$i] & @CRLF & _
-                'Step: ' & $aStepsFunctionsList)
+            MsgBox(48, $aTexts[$eMessageTitleInvalidSingleQuoteCount], $aTexts[$eMessageInvalidSingleQuoteCount] & @CRLF & @CRLF & _
+                'File:' & @CRLF & $aFeatureFileList[$i] & @CRLF & @CRLF & _
+                'Scenario Step:' & @CRLF & $aStepsFunctionsList)
             ContinueLoop
         EndIf
 
@@ -34,13 +34,13 @@ Func _createStepsWrapperFunctionsFile()
     Next
 EndFunc
 
-Func _getFeatureFiles()
+Func _getListOfFiles($sFolder, $sFileExtension)
     If @Compiled Then
-        Local $sFeatureFilePath = _PathFull('..\src\Specification\Features\')
+        Local $sFeatureFilePath = _PathFull('..\src\Specification\' & $sFolder & '\')
     EndIf
 
     If Not @Compiled Then
-        Local $sFeatureFilePath = _PathFull('..\Features\')
+        Local $sFeatureFilePath = _PathFull('..\' & $sFolder & '\')
     EndIf
 
     Local Const $iOnlyFiles    = 1
@@ -48,7 +48,7 @@ Func _getFeatureFiles()
     Local Const $iSortAsc      = 1
     Local Const $bAbsolutePath = 2
 
-    Return _FileListToArrayRec($sFeatureFilePath, '*.feature', $iOnlyFiles, $iRecursive, $iSortAsc, $bAbsolutePath)
+    Return _FileListToArrayRec($sFeatureFilePath, '*' & $sFileExtension, $iOnlyFiles, $iRecursive, $iSortAsc, $bAbsolutePath)
 EndFunc
 
 Func _getAllStepsOfFeature($sFeatureFileContent)
@@ -213,25 +213,97 @@ Func _writeStepsWrapperFunctionFile($sFile, $aStepsFunctionsList)
 
     Local $iStepsFunctionListCount = _getCount($aStepsFunctionsList)
 
-    If Not FileExists($sStepFile) Then
-        For $i = 0 To $iStepsFunctionListCount Step 1
-            _appendToFile($sStepFile, $aStepsFunctionsList[$i])
-        Next
-
-        Return
-    EndIf
-
-    Local $sStepFileContent = _getFileContent($sStepFile)
-
     For $i = 0 To $iStepsFunctionListCount Step 1
-        Local $sStepsAttributeNameRegExPattern = '; (\[.+?\])'
-        Local $aAllStepsAttributeNames         = StringRegExp($sStepFileContent, $sStepsAttributeNameRegExPattern, 3)
-        Local $sCurrentStepAttributeName       = StringRegExp($aStepsFunctionsList[$i], $sStepsAttributeNameRegExPattern, 3)[0]
-        Local $iFoundResult                    = _ArraySearch($aAllStepsAttributeNames, $sCurrentStepAttributeName)
+        Local $sStepsAttributeNameRegExPattern       = '; (\[.+?\])'
+        Local $sCurrentStepAttributeName             = StringRegExp($aStepsFunctionsList[$i], $sStepsAttributeNameRegExPattern, 3)[0]
+        Local $aTableOfAllScenarioStepAttributeNames = _getAllScenarioStepAttributeNames()
 
+        Local $iFoundResult = _ArraySearch($aTableOfAllScenarioStepAttributeNames, $sCurrentStepAttributeName)
         Local $iStepFunctionDoesNotExistAlready = -1
+
         If $iFoundResult == $iStepFunctionDoesNotExistAlready Then
             _appendToFile($sStepFile, $aStepsFunctionsList[$i])
         EndIf
     Next
+EndFunc
+
+Func _checkForDuplicateScenarioSteps()
+    Local $aTableOfAllScenarioStepAttributeNames = _getAllScenarioStepAttributeNames()
+    Local $aTableOfDuplicateScenarioSteps        = _getDuplicateScenarioSteps($aTableOfAllScenarioStepAttributeNames)
+
+    If UBound($aTableOfDuplicateScenarioSteps) > 0 Then
+        Local $sDuplicateInformation = 'Scenario Step:' & @CRLF & $aTableOfDuplicateScenarioSteps[0][0] & @CRLF & @CRLF & 'In files:' & @CRLF
+
+        For $i = 0 To _getCount($aTableOfDuplicateScenarioSteps) Step 1
+            $sDuplicateInformation &= $aTableOfDuplicateScenarioSteps[$i][1] & @CRLF & @CRLF
+        Next
+
+        MsgBox(48, $aTexts[$eMessageTitleDuplicatesFound], $aTexts[$eMessageDuplicateScenarioSteps] & @CRLF & @CRLF & _
+            $sDuplicateInformation)
+    EndIf
+EndFunc
+
+Func _getAllScenarioStepAttributeNames()
+    Local $aStepFileList = _getListOfFiles('Steps', '*Steps.au3')
+
+    If Not IsArray($aStepFileList) Then
+        Return
+    EndIf
+
+    Local $aTableOfAllStepAttributeNames[1][2]
+
+    For $i = 1 To _getCount($aStepFileList) Step 1
+        Local $sStepFileContent                = _getFileContent($aStepFileList[$i])
+        Local $sStepsAttributeNameRegExPattern = '; (\[.+?\])'
+        Local $aAllStepsAttributeNames         = StringRegExp($sStepFileContent, $sStepsAttributeNameRegExPattern, 3)
+
+        For $j = 0 To _getCount($aAllStepsAttributeNames) Step 1
+            _ArrayAdd($aTableOfAllStepAttributeNames, $aAllStepsAttributeNames[$j] & '|' & $aStepFileList[$i])
+        Next
+    Next
+
+    _ArraySort($aTableOfAllStepAttributeNames)
+
+    Return $aTableOfAllStepAttributeNames
+EndFunc
+
+Func _getDuplicateScenarioSteps($aTableOfAllStepAttributeNames)
+    Local $iTableCount = _getCount($aTableOfAllStepAttributeNames)
+    Local $aTableOfDuplicateStepAttributeNames[$iTableCount + 1][2]
+
+    Local $iRowIndex      = 0
+    Local $bIsDuplication = False
+
+    For $i = 1 To $iTableCount Step 1
+        Local $sCurrentStepAttributeName  = $aTableOfAllStepAttributeNames[$i][0]
+        Local $sCurrentFilePath           = $aTableOfAllStepAttributeNames[$i][1]
+        Local $sPreviousStepAttributeName = $aTableOfAllStepAttributeNames[$i - 1][0]
+        Local $sPreviousFilePath          = $aTableOfAllStepAttributeNames[$i - 1][1]
+
+        If $sCurrentStepAttributeName == $sPreviousStepAttributeName Then
+            $aTableOfDuplicateStepAttributeNames[$iRowIndex][0] = $sPreviousStepAttributeName
+            $aTableOfDuplicateStepAttributeNames[$iRowIndex][1] = $sPreviousFilePath
+            $iRowIndex += 1
+
+            $bIsDuplication = True
+        Else
+            If $bIsDuplication Then
+                $aTableOfDuplicateStepAttributeNames[$iRowIndex][0] = $sPreviousStepAttributeName
+                $aTableOfDuplicateStepAttributeNames[$iRowIndex][1] = $sPreviousFilePath
+                $iRowIndex += 1
+
+                $bIsDuplication = False
+            EndIf
+        EndIf
+
+        If $i = $iTableCount And $bIsDuplication Then
+            $aTableOfDuplicateStepAttributeNames[$iRowIndex][0] = $sCurrentStepAttributeName
+            $aTableOfDuplicateStepAttributeNames[$iRowIndex][1] = $sCurrentFilePath
+            $iRowIndex += 1
+        EndIf
+    Next
+
+    Redim $aTableOfDuplicateStepAttributeNames[$iRowIndex][2]
+
+    Return $aTableOfDuplicateStepAttributeNames
 EndFunc

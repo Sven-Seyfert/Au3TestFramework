@@ -1,6 +1,6 @@
 Feature: Profile
     As Software Test Engineer,
-    I want to test the profile actions and their behavior,
+    I want to test the "Profile" actions and their behavior,
     for the benefit to ensure a valid, automatically verified and stable functionality.
 
 

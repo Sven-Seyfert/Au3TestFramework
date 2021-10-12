@@ -1,6 +1,6 @@
-Feature: Example4
+Feature: Example Invalid By Background
     As Software Test Engineer,
-    I want to test the "Example4" actions and their behavior,
+    I want to test the "Example Invalid By Background" actions and their behavior,
     for the benefit to ensure a valid, automatically verified and stable functionality.
 
 
