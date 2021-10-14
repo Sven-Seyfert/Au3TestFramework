@@ -8,7 +8,6 @@
 ![license](https://img.shields.io/badge/license-MIT-ff69b4.svg?style=flat-square&logo=spdx)
 ![contributors](https://img.shields.io/github/contributors/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
 ![repo size](https://img.shields.io/github/repo-size/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
-![lines of code](https://img.shields.io/tokei/lines/github/Sven-Seyfert/Au3TestFramework?style=flat-square&color=%23008080)
 ![last commit](https://img.shields.io/github/last-commit/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
 ![release](https://img.shields.io/github/release/Sven-Seyfert/Au3TestFramework.svg?style=flat-square&logo=github)
 ![os](https://img.shields.io/badge/os-windows-yellow.svg?style=flat-square&logo=windows)
