@@ -149,7 +149,10 @@ Func _createStepFunction($sStepName)
     $sStepName = _setFirstCharacterOfStringToLower($sStepName) & '('
     $sStepName = _addParametersForFunction($iParameterCount, $sStepName)
 
-    Return 'Func _' & $sStepName & @CRLF & _StringRepeat(' ', 4) & '; your code pending' & @CRLF & 'EndFunc'
+    Local $sMessageIconAndTitle = 'MsgBox(48, ''Your code pending'', _'
+    Local $sMessageBody         = '''Add your code in scenario step wrapper function'' & @CRLF & @CRLF & _' & @CRLF & _StringRepeat(' ', 8) & '''"_' & $sStepName & '"'')'
+
+    Return 'Func _' & $sStepName & @CRLF & _StringRepeat(' ', 4) & $sMessageIconAndTitle & @CRLF & _StringRepeat(' ', 8) & $sMessageBody & @CRLF & 'EndFunc'
 EndFunc
 
 Func _reformatStepName($sStepName)
