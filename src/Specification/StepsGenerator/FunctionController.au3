@@ -1,4 +1,4 @@
-Func _createStepsWrapperFunctionsFile()
+Func _createFilesWithStepsWrapperFunctions()
     Local $aFeatureFileList = _getListOfFiles('Features', '.feature')
 
     If Not IsArray($aFeatureFileList) Then
@@ -36,11 +36,11 @@ EndFunc
 
 Func _getListOfFiles($sFolder, $sFileExtension)
     If @Compiled Then
-        Local $sFeatureFilePath = _PathFull('..\src\Specification\' & $sFolder & '\')
+        Local $sFilePath = _PathFull('..\src\Specification\' & $sFolder & '\')
     EndIf
 
     If Not @Compiled Then
-        Local $sFeatureFilePath = _PathFull('..\' & $sFolder & '\')
+        Local $sFilePath = _PathFull('..\' & $sFolder & '\')
     EndIf
 
     Local Const $iOnlyFiles    = 1
@@ -48,7 +48,7 @@ Func _getListOfFiles($sFolder, $sFileExtension)
     Local Const $iSortAsc      = 1
     Local Const $bAbsolutePath = 2
 
-    Return _FileListToArrayRec($sFeatureFilePath, '*' & $sFileExtension, $iOnlyFiles, $iRecursive, $iSortAsc, $bAbsolutePath)
+    Return _FileListToArrayRec($sFilePath, '*' & $sFileExtension, $iOnlyFiles, $iRecursive, $iSortAsc, $bAbsolutePath)
 EndFunc
 
 Func _getAllStepsOfFeature($sFeatureFileContent)
