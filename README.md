@@ -71,6 +71,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/Sven-Seyfert
 - Badges by [Shields](https://shields.io)
 - Utilities components by
   - Me (FormatBddTable.au3)
+  - [Großvater](https://autoit.de/thread/24069-guiscroll-udf-scrollbare-guis/) (UDF GUIScroll.au3); [LICENSE](https://github.com/Sven-Seyfert/Au3TestFramework/blob/main/utilities/GUIScroll.LICENSE.md)
 
 ##
 
