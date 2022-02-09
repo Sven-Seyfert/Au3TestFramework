@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Go to [legend](#legend---types-of-changes) for further information about the types of changes.
 
+## [0.15.0] - 2022-02-09
+
+### Changed
+
+- Update copyright year to 2022 in LICENSE.md file.
+- Update of documents/templates (bug report-, feature request- and pull request template).
+- Update of the contributing file.
+- Code of Conduct update to their version v2.1.
+- Version bump.
+
+### Removed
+
+- Unnecessary documents/templates in docs directory.
+- Code to generate these unnecessary files in docs.
+
 ## [0.14.0] - 2021-10-22
 
 ### Added
@@ -80,6 +95,7 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 - All repository data and dependencies (already added before in version v0.8.0).
 
+[0.15.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.14.0...v0.15.0
 [0.14.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.13.0...v0.14.0
 [0.13.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.12.0...v0.13.0
 [0.12.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.11.0...v0.12.0

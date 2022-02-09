@@ -1,41 +1,44 @@
 ---
 name: Bug report
-about: Create a report to help to improve the project
+about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Describe the bug**
+## Bug report
+
+### Describe the bug
+
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
+### How to reproduce
+
+Steps to reproduce the behavior (e.g.):
+
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Click on '...'
+3. Scroll down to '...'
 4. See error
 
-**Expected behavior**
+### Expected behavior
+
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+### Screenshots
+
 If applicable, add screenshots to help explain your problem.
 
-**SUT (system under test)**
-Please execute the following function and copy the console result here.
+### Additional context
 
-``` au3
-Func _getSystemInfos()
-    ConsoleWrite('@AutoItExe:      ' & @AutoItExe     & @CRLF)
-    ConsoleWrite('@AutoItVersion:  ' & @AutoItVersion & @CRLF)
-    ConsoleWrite('@CPUArch:        ' & @CPUArch       & @CRLF)
-    ConsoleWrite('@OSArch:         ' & @OSArch        & @CRLF)
-    ConsoleWrite('@OSVersion:      ' & @OSVersion     & @CRLF)
-EndFunc
-_getSystemInfos()
-```
-
-**Additional context**
 Add any other context about the problem here.
+
+### System under test
+
+Please complete the following information.
+
+- OS: [e.g. Windows 10]
+- OS Arch.: [e.g. X64]
+- Browser [e.g. firefox]
+- Browser version [e.g. 96.0.3]
