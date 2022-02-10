@@ -22,7 +22,6 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 ### Removed
 
 - Unnecessary documents/templates in docs directory.
-- Code to generate these unnecessary files in docs.
 
 ## [0.14.0] - 2021-10-22
 
