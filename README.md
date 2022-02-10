@@ -13,7 +13,7 @@
 ![os](https://img.shields.io/badge/os-windows-yellow.svg?style=flat-square&logo=windows)
 ![editor](https://img.shields.io/badge/editor-VSCode-blueviolet.svg?style=flat-square&logo=visual-studio-code)
 
-[Description](#description) | [Features](#features) | [Getting started](#getting-started) | [Configuration](#configuration) | [Keyboard shortcuts](#keyboard-shortcuts) | [Contributing](#contributing) | [License](#license) | [Acknowledgements](#acknowledgements)
+[Description](#description) | [Features](#features) | [Getting started](#getting-started) | [Configuration](#configuration) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license) | [Acknowledgements](#acknowledgements)
 
 ## Description
 
@@ -46,16 +46,39 @@ Then, run or compile the program.
 
 To be defined [...]
 
-## Configuration
-
-To be defined [...]
-
-## Keyboard Shortcuts
+#### *Keyboard Shortcuts*
 
 | Action | Shortcut |
 | :---   | :---     |
 | ...    | ...      |
 | ...    | ...      |
+
+## Configuration
+
+To be defined [...]
+
+## FAQ
+
+<details>
+<summary><i>Frequently Asked Questions</i></summary><br>
+
+  <details>
+  <summary><code>1. How to [...]</code></summary><p>
+
+  **Q:** Is there a frequently asked question already?<br>
+  **A:** No, not yet.
+
+  <br></p></details>
+
+  <details>
+  <summary><code>2. How to [...]</code></summary><p>
+
+  **Q:** [...]?<br>
+  **A:** [...].
+
+  <br></p></details>
+
+</details>
 
 ## Contributing
 

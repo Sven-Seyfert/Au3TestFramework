@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Go to [legend](#legend---types-of-changes) for further information about the types of changes.
 
+## [0.16.0] - 2022-02-10
+
+### Added
+
+- Links to the project badges/icons.
+- FAQ section to README.md file.
+
+### Changed:
+
+- Move "Keyboard shortcuts" section into "Getting started" section (as sub section after "Usage").
+- Version bump.
+
 ## [0.15.0] - 2022-02-09
 
 ### Changed
