@@ -1,4 +1,4 @@
-Func _createRandomText($iLength = 10)
+Func _CreateRandomText($iLength = 10)
     Local $sText = ''
 
     Dim $aChr[2]
@@ -11,21 +11,21 @@ Func _createRandomText($iLength = 10)
     Return $sText
 EndFunc
 
-Func _guiFadeIn($hGui, $iSleep = 10)
+Func _GuiFadeIn($hGui, $iSleep = 10)
     For $i = 0 To 255 Step 5
         WinSetTrans($hGui, '', $i)
         Sleep($iSleep)
     Next
 EndFunc
 
-Func _guiFadeOut($hGui, $iSleep = 10)
+Func _GuiFadeOut($hGui, $iSleep = 10)
     For $i = 255 To 0 Step -5
         WinSetTrans($hGui, '', $i)
         Sleep($iSleep)
     Next
 EndFunc
 
-Func _isMouseOnGui($hGui)
+Func _IsMouseOnGui($hGui)
     $aMouseData = MouseGetPos()
     $aGuiData   = WinGetPos($hGui)
 
@@ -40,7 +40,7 @@ Func _isMouseOnGui($hGui)
     Return False
 EndFunc
 
-Func _isMouseOnControl($iXMouse, $iYMouse, $iXControl, $iYControl, $iWidthControl, $iHeightControl)
+Func _IsMouseOnControl($iXMouse, $iYMouse, $iXControl, $iYControl, $iWidthControl, $iHeightControl)
     If $iXMouse >= $iXControl And _
        $iYMouse >= $iYControl And _
        $iXMouse <= $iXControl + $iWidthControl  And _
@@ -51,81 +51,81 @@ Func _isMouseOnControl($iXMouse, $iYMouse, $iXControl, $iYControl, $iWidthContro
     EndIf
 EndFunc
 
-Func _setControlFocusWithoutSelectedText($cControl)
+Func _SetControlFocusWithoutSelectedText($cControl)
     GUICtrlSetState($cControl, $GUI_FOCUS)
     ControlClick($aGui[$eHandle], '', $cControl)
 EndFunc
 
-Func _hoverMoveIcon()
-    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aMoveIcon[$eXPosition], $aMoveIcon[$eYPosition], $aMoveIcon[$eWidth], $aMoveIcon[$eHeight])
+Func _HoverMoveIcon()
+    Return _IsMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aMoveIcon[$eXPosition], $aMoveIcon[$eYPosition], $aMoveIcon[$eWidth], $aMoveIcon[$eHeight])
 EndFunc
 
-Func _hoverCloseIcon()
-    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aCloseIcon[$eXPosition], $aCloseIcon[$eYPosition], $aCloseIcon[$eWidth], $aCloseIcon[$eHeight])
+Func _HoverCloseIcon()
+    Return _IsMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aCloseIcon[$eXPosition], $aCloseIcon[$eYPosition], $aCloseIcon[$eWidth], $aCloseIcon[$eHeight])
 EndFunc
 
-Func _hoverThemeIcon()
-    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aThemeIcon[$eXPosition], $aThemeIcon[$eYPosition], $aThemeIcon[$eWidth], $aThemeIcon[$eHeight])
+Func _HoverThemeIcon()
+    Return _IsMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aThemeIcon[$eXPosition], $aThemeIcon[$eYPosition], $aThemeIcon[$eWidth], $aThemeIcon[$eHeight])
 EndFunc
 
-Func _hoverButtonOkay()
-    Return _isMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aButtonAdd[$eWidth], $aButtonAdd[$eHeight])
+Func _HoverButtonOkay()
+    Return _IsMouseOnControl($aMouseData[0] - $aGuiData[0], $aMouseData[1] - $aGuiData[1], $aButtonAdd[$eXPosition], $aButtonAdd[$eYPosition], $aButtonAdd[$eWidth], $aButtonAdd[$eHeight])
 EndFunc
 
-Func _hoverActions()
-    If _isMouseOnGui($aGui[$eHandle]) Then
+Func _HoverActions()
+    If _IsMouseOnGui($aGui[$eHandle]) Then
         Select
-            Case _hoverCloseIcon()
-                _resetThemeIconColor()
+            Case _HoverCloseIcon()
+                _ResetThemeIconColor()
                 GUICtrlSetBkColor($aCloseIcon[$eBackground], $aCloseIcon[$eHoverColor])
                 GUICtrlSetBkColor($aCloseIcon[$eLabel], $aCloseIcon[$eHoverColor])
                 GUICtrlSetColor($aCloseIcon[$eLabel], $aCloseIcon[$eFontColor])
 
-            Case _hoverThemeIcon()
-                _resetCloseIconColor()
-                _resetMoveIconColor()
-                GUICtrlSetBkColor($aThemeIcon[$eBackground], _setThemeColor($aThemeIcon[$eHoverColor], True))
-                GUICtrlSetBkColor($aThemeIcon[$eLabel], _setThemeColor($aThemeIcon[$eHoverColor], True))
+            Case _HoverThemeIcon()
+                _ResetCloseIconColor()
+                _ResetMoveIconColor()
+                GUICtrlSetBkColor($aThemeIcon[$eBackground], _SetThemeColor($aThemeIcon[$eHoverColor], True))
+                GUICtrlSetBkColor($aThemeIcon[$eLabel], _SetThemeColor($aThemeIcon[$eHoverColor], True))
 
-            Case _hoverMoveIcon()
-                _resetThemeIconColor()
-                GUICtrlSetBkColor($aMoveIcon[$eBackground], _setThemeColor($aMoveIcon[$eHoverColor], True))
-                GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aMoveIcon[$eHoverColor], True))
+            Case _HoverMoveIcon()
+                _ResetThemeIconColor()
+                GUICtrlSetBkColor($aMoveIcon[$eBackground], _SetThemeColor($aMoveIcon[$eHoverColor], True))
+                GUICtrlSetBkColor($aMoveIcon[$eLabel], _SetThemeColor($aMoveIcon[$eHoverColor], True))
 
-            Case _hoverButtonOkay()
-                GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _setThemeColor($aColor[$eBorderInput], True))
-                GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _setThemeColor($aColor[$eBorderInput], True))
+            Case _HoverButtonOkay()
+                GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _SetThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _SetThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _SetThemeColor($aColor[$eBorderInput], True))
+                GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _SetThemeColor($aColor[$eBorderInput], True))
 
             Case Else
-                _resetCloseIconColor()
-                _resetThemeIconColor()
-                _resetMoveIconColor()
-                _resetBorderColorButtonAdd()
+                _ResetCloseIconColor()
+                _ResetThemeIconColor()
+                _ResetMoveIconColor()
+                _ResetBorderColorButtonAdd()
         EndSelect
     EndIf
 EndFunc
 
-Func _resetCloseIconColor()
-    GUICtrlSetBkColor($aCloseIcon[$eBackground], _setThemeColor($aColor[$eBackground], True))
-    GUICtrlSetBkColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eBackground], True))
-    GUICtrlSetColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eIcon], True))
+Func _ResetCloseIconColor()
+    GUICtrlSetBkColor($aCloseIcon[$eBackground], _SetThemeColor($aColor[$eBackground], True))
+    GUICtrlSetBkColor($aCloseIcon[$eLabel], _SetThemeColor($aColor[$eBackground], True))
+    GUICtrlSetColor($aCloseIcon[$eLabel], _SetThemeColor($aColor[$eIcon], True))
 EndFunc
 
-Func _resetThemeIconColor()
-    GUICtrlSetBkColor($aThemeIcon[$eBackground], _setThemeColor($aColor[$eBackground], True))
-    GUICtrlSetBkColor($aThemeIcon[$eLabel], _setThemeColor($aColor[$eBackground], True))
+Func _ResetThemeIconColor()
+    GUICtrlSetBkColor($aThemeIcon[$eBackground], _SetThemeColor($aColor[$eBackground], True))
+    GUICtrlSetBkColor($aThemeIcon[$eLabel], _SetThemeColor($aColor[$eBackground], True))
 EndFunc
 
-Func _resetMoveIconColor()
-    GUICtrlSetBkColor($aMoveIcon[$eBackground], _setThemeColor($aColor[$eBackground], True))
-    GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eBackground], True))
+Func _ResetMoveIconColor()
+    GUICtrlSetBkColor($aMoveIcon[$eBackground], _SetThemeColor($aColor[$eBackground], True))
+    GUICtrlSetBkColor($aMoveIcon[$eLabel], _SetThemeColor($aColor[$eBackground], True))
 EndFunc
 
-Func _resetBorderColorButtonAdd()
-    GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _setThemeColor($aColor[$eBorder], True))
-    GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _setThemeColor($aColor[$eBorder], True))
+Func _ResetBorderColorButtonAdd()
+    GUICtrlSetBkColor($aButtonAdd[$eBorderTop], _SetThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderRight], _SetThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderBottom], _SetThemeColor($aColor[$eBorder], True))
+    GUICtrlSetBkColor($aButtonAdd[$eBorderLeft], _SetThemeColor($aColor[$eBorder], True))
 EndFunc

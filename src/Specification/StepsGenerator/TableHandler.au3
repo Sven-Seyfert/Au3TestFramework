@@ -1,13 +1,13 @@
-Func _getCount($aList)
+Func _GetCount($aList)
     Return UBound($aList) - 1
 EndFunc
 
-Func _removeEmptyLinesFromList($aList)
+Func _RemoveEmptyLinesFromList($aList)
     _ArrayDelete($aList, 0)
 
     Local $sOnlySpacesOrTabsTillLineEndRegExPattern = '^\s+$'
 
-    For $i = _getCount($aList) To 0 Step - 1
+    For $i = _GetCount($aList) To 0 Step - 1
         If $aList[$i] = '' Or StringRegExp($aList[$i], $sOnlySpacesOrTabsTillLineEndRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -16,10 +16,10 @@ Func _removeEmptyLinesFromList($aList)
     Return $aList
 EndFunc
 
-Func _removeTagsFromList($aList)
+Func _RemoveTagsFromList($aList)
     Local $sTagsRegExPattern = '^\s+@|^@\w+'
 
-    For $i = _getCount($aList) To 0 Step - 1
+    For $i = _GetCount($aList) To 0 Step - 1
         If StringRegExp($aList[$i], $sTagsRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -28,20 +28,20 @@ Func _removeTagsFromList($aList)
     Return $aList
 EndFunc
 
-Func _removeDoubleWhitespacesFromList($aList)
+Func _RemoveDoubleWhitespacesFromList($aList)
     Local Const $iLeadingTrailingAndDoubleWhitespaces = 7
 
-    For $i = _getCount($aList) To 0 Step - 1
+    For $i = _GetCount($aList) To 0 Step - 1
         $aList[$i] = StringStripWS($aList[$i], $iLeadingTrailingAndDoubleWhitespaces)
     Next
 
     Return $aList
 EndFunc
 
-Func _removeScenarioTitleFromList($aList)
+Func _RemoveScenarioTitleFromList($aList)
     Local $sScenarioTitleRegExPattern = 'Scenario:.+?$'
 
-    For $i = _getCount($aList) To 0 Step - 1
+    For $i = _GetCount($aList) To 0 Step - 1
         If StringRegExp($aList[$i], $sScenarioTitleRegExPattern, 0) Then
             _ArrayDelete($aList, $i)
         EndIf
@@ -50,7 +50,7 @@ Func _removeScenarioTitleFromList($aList)
     Return $aList
 EndFunc
 
-Func _removeDuplicateSteps($aList)
+Func _RemoveDuplicateSteps($aList)
     $aList = _ArrayUnique($aList)
     _ArrayDelete($aList, 0)
     $aList[0] = ''
@@ -58,7 +58,7 @@ Func _removeDuplicateSteps($aList)
     Return $aList
 EndFunc
 
-Func _removeDuplicateStepsFunctions($aList)
+Func _RemoveDuplicateStepsFunctions($aList)
     $aList = _ArrayUnique($aList)
     _ArrayDelete($aList, 0)
 

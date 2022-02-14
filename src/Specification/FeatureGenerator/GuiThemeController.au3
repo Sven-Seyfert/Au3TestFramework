@@ -1,50 +1,50 @@
-Func _applyThemeGui()
-    GUISetBkColor(_setThemeColor($aColor[$eBackground]), $aGui[$eHandle])
-    _setBorderColor($aGui, _setThemeColor($aColor[$eBorder]))
+Func _ApplyThemeGui()
+    GUISetBkColor(_SetThemeColor($aColor[$eBackground]), $aGui[$eHandle])
+    _SetBorderColor($aGui, _SetThemeColor($aColor[$eBorder]))
 EndFunc
 
-Func _applyThemeCloseIcon()
-    GUICtrlSetBkColor($aCloseIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aCloseIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
+Func _ApplyThemeCloseIcon()
+    GUICtrlSetBkColor($aCloseIcon[$eBackground], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetBkColor($aCloseIcon[$eLabel], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetColor($aCloseIcon[$eLabel], _SetThemeColor($aColor[$eIcon]))
 EndFunc
 
-Func _applyThemeThemeIcon()
-    GUICtrlSetBkColor($aThemeIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aThemeIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aThemeIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
+Func _ApplyThemeThemeIcon()
+    GUICtrlSetBkColor($aThemeIcon[$eBackground], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetBkColor($aThemeIcon[$eLabel], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetColor($aThemeIcon[$eLabel], _SetThemeColor($aColor[$eIcon]))
 EndFunc
 
-Func _applyMoveThemeIcon()
-    GUICtrlSetBkColor($aMoveIcon[$eBackground], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetBkColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eBackground]))
-    GUICtrlSetColor($aMoveIcon[$eLabel], _setThemeColor($aColor[$eIcon]))
+Func _ApplyMoveThemeIcon()
+    GUICtrlSetBkColor($aMoveIcon[$eBackground], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetBkColor($aMoveIcon[$eLabel], _SetThemeColor($aColor[$eBackground]))
+    GUICtrlSetColor($aMoveIcon[$eLabel], _SetThemeColor($aColor[$eIcon]))
 EndFunc
 
-Func _applyThemeHeadline()
-    GUICtrlSetColor($aHeadline[$eLabel], _setThemeColor($aColor[$eFont]))
+Func _ApplyThemeHeadline()
+    GUICtrlSetColor($aHeadline[$eLabel], _SetThemeColor($aColor[$eFont]))
 EndFunc
 
-Func _applyThemeSubHeadline()
-    GUICtrlSetColor($aSubHeadline[$eLabel], _setThemeColor($aColor[$eFont]))
+Func _ApplyThemeSubHeadline()
+    GUICtrlSetColor($aSubHeadline[$eLabel], _SetThemeColor($aColor[$eFont]))
 EndFunc
 
-Func _applyThemeInputFeatureName()
-    GUICtrlSetBkColor($aInputFeatureName[$eBackground], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetBkColor($aInputFeatureName[$eInput], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetColor($aInputFeatureName[$eLabel], _setThemeColor($aColor[$eFont]))
-    GUICtrlSetColor($aInputFeatureName[$eInput], _setThemeColor($aColor[$eFont]))
-    _setBorderColor($aInputFeatureName, _setThemeColor($aColor[$eBorderInput]))
+Func _ApplyThemeInputFeatureName()
+    GUICtrlSetBkColor($aInputFeatureName[$eBackground], _SetThemeColor($aColor[$eBackgroundInput]))
+    GUICtrlSetBkColor($aInputFeatureName[$eInput], _SetThemeColor($aColor[$eBackgroundInput]))
+    GUICtrlSetColor($aInputFeatureName[$eLabel], _SetThemeColor($aColor[$eFont]))
+    GUICtrlSetColor($aInputFeatureName[$eInput], _SetThemeColor($aColor[$eFont]))
+    _SetBorderColor($aInputFeatureName, _SetThemeColor($aColor[$eBorderInput]))
 EndFunc
 
-Func _applyThemeButtonOkay()
-    GUICtrlSetBkColor($aButtonAdd[$eBackground], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetBkColor($aButtonAdd[$eLabel], _setThemeColor($aColor[$eBackgroundInput]))
-    GUICtrlSetColor($aButtonAdd[$eLabel], _setThemeColor($aColor[$eFont]))
-    _setBorderColor($aButtonAdd, _setThemeColor($aColor[$eBorder]))
+Func _ApplyThemeButtonOkay()
+    GUICtrlSetBkColor($aButtonAdd[$eBackground], _SetThemeColor($aColor[$eBackgroundInput]))
+    GUICtrlSetBkColor($aButtonAdd[$eLabel], _SetThemeColor($aColor[$eBackgroundInput]))
+    GUICtrlSetColor($aButtonAdd[$eLabel], _SetThemeColor($aColor[$eFont]))
+    _SetBorderColor($aButtonAdd, _SetThemeColor($aColor[$eBorder]))
 EndFunc
 
-Func _themeToggle()
+Func _ThemeToggle()
     If $bIsDarkModeActive Then
         GUICtrlSetData($aThemeIcon[$eLabel], Chr(82))
         GUICtrlSetFont($aThemeIcon[$eLabel], 17, 500, Default, 'WingDings')
@@ -60,18 +60,18 @@ Func _themeToggle()
     EndIf
 EndFunc
 
-Func _setBorderColor($aControl, $vBorderColor)
+Func _SetBorderColor($aControl, $vBorderColor)
     GUICtrlSetBkColor($aControl[$eBorderTop], $vBorderColor)
     GUICtrlSetBkColor($aControl[$eBorderRight], $vBorderColor)
     GUICtrlSetBkColor($aControl[$eBorderBottom], $vBorderColor)
     GUICtrlSetBkColor($aControl[$eBorderLeft], $vBorderColor)
 EndFunc
 
-Func _setThemeColor($vColor, $bShouldInvert = False)
-    If Not $bShouldInvert Then Return $bIsDarkModeActive ? $vColor : _hexColorInvert($vColor)
-    If $bShouldInvert     Then Return $bIsDarkModeActive ? _hexColorInvert($vColor) : $vColor
+Func _SetThemeColor($vColor, $bShouldInvert = False)
+    If Not $bShouldInvert Then Return $bIsDarkModeActive ? $vColor : _HexColorInvert($vColor)
+    If $bShouldInvert     Then Return $bIsDarkModeActive ? _HexColorInvert($vColor) : $vColor
 EndFunc
 
-Func _hexColorInvert($vHexCode)
+Func _HexColorInvert($vHexCode)
     Return '0x' & Hex (0xFFFFFF - $vHexCode, 6)
 EndFunc

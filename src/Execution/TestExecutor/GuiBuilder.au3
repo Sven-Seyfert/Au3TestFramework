@@ -1,12 +1,12 @@
-Func _createGui()
+Func _CreateGui()
     $aGui[$eHandle] = GUICreate($aGui[$eTitle], $aGui[$eWidth], $aGui[$eHeight], $aGui[$eXPosition], $aGui[$eYPosition], $aGui[$eStyle])
                       GUISetFont(Default, Default, Default, $aGui[$eFont])
 EndFunc
 
-Func _createDynamicGuiContent($aTable)
+Func _CreateDynamicGuiContent($aTable)
     ;~ _ArrayDisplay($aTable, 1)
 
-    Local $iCount = _getCount($aTable)
+    Local $iCount = _GetCount($aTable)
     Local $sLastFeatureName = Null
     Local $iY = 30
 
@@ -19,11 +19,11 @@ Func _createDynamicGuiContent($aTable)
         If $sFeatureName <> $sLastFeatureName Then
             $sLastFeatureName = $sFeatureName
 
-            Local $iScenarioCounter = _getScenarioCountOfTheFeatureFile($i, $iCount, $aTable)
+            Local $iScenarioCounter = _GetScenarioCountOfTheFeatureFile($i, $iCount, $aTable)
 
             $iY += 15
 
-            _createHorizontalLine($iY - 5)
+            _CreateHorizontalLine($iY - 5)
 
             $iY += 5
 
@@ -38,8 +38,8 @@ Func _createDynamicGuiContent($aTable)
             $aCheckboxFeature[$eHandle]    = GUICtrlCreateCheckbox($aCheckboxFeature[$eTitle], $aCheckboxFeature[$eXPosition], $aCheckboxFeature[$eYPosition], $aCheckboxFeature[$eWidth], $aCheckboxFeature[$eHeight])
                                              GUICtrlSetFont(-1, Default, 700)
 
-            _setHandCursor()
-            _fillTableOfCheckboxesData($aCheckboxFeature[$eHandle], $sCheckboxLevelFeatureName, $sFeatureFilePath)
+            _SetHandCursor()
+            _FillTableOfCheckboxesData($aCheckboxFeature[$eHandle], $sCheckboxLevelFeatureName, $sFeatureFilePath)
 
             $iY += 20
         EndIf
@@ -48,88 +48,88 @@ Func _createDynamicGuiContent($aTable)
 
         Switch $iNumber
             Case 1
-                _createScenarioRunIndicator($aIcon[$eSuccess], $iY, $aColor[$eGreen])
+                _CreateScenarioRunIndicator($aIcon[$eSuccess], $iY, $aColor[$eGreen])
                 $iSuccessCounter += 1
             Case 2
-                _createScenarioRunIndicator($aIcon[$eFail], $iY, $aColor[$eRed])
+                _CreateScenarioRunIndicator($aIcon[$eFail], $iY, $aColor[$eRed])
                 $iFailureCounter += 1
             Case 3
-                _createScenarioRunIndicator($aIcon[$eNotExecuted], $iY, $aColor[$eBlue])
+                _CreateScenarioRunIndicator($aIcon[$eNotExecuted], $iY, $aColor[$eBlue])
                 $iNoExecutionCounter += 1
         EndSwitch
 
-        _createScenarioDuration($i, $iY)
+        _CreateScenarioDuration($i, $iY)
 
         $aCheckboxScenario[$eTitle]     = $sScenarioName
         $aCheckboxScenario[$eYPosition] = $iY
         $aCheckboxScenario[$eHandle]    = GUICtrlCreateCheckbox($aCheckboxScenario[$eTitle], $aCheckboxScenario[$eXPosition], $aCheckboxScenario[$eYPosition], $aCheckboxScenario[$eWidth], $aCheckboxScenario[$eHeight])
 
-        _setHandCursor()
-        _fillTableOfCheckboxesData($aCheckboxScenario[$eHandle], $sCheckboxLevelScenarioName, $sFeatureFilePath)
+        _SetHandCursor()
+        _FillTableOfCheckboxesData($aCheckboxScenario[$eHandle], $sCheckboxLevelScenarioName, $sFeatureFilePath)
 
         $iY += 20
     Next
 
-    _createHorizontalLine($iY + 10)
+    _CreateHorizontalLine($iY + 10)
 
     GUICtrlCreateLabel('', 0, $iY + 300, 0, 0) ; this is only for a margin bottom purpose
 EndFunc
 
-Func _createButtonBar()
+Func _CreateButtonBar()
                                           GUICtrlCreateLabel('', 0, 0, $aGui[$eWidth] - 18, 41)
                                           GUICtrlSetBkColor(-1, $aColor[$eGray])
                                           GUICtrlSetState(-1, $GUI_DISABLE)
 
     $aCustomButtonRun[$eHandle]         = GUICtrlCreateLabel($aCustomButtonRun[$eTitle], $aCustomButtonRun[$eXPosition], $aCustomButtonRun[$eYPosition], $aCustomButtonRun[$eWidth], $aCustomButtonRun[$eHeight])
-                                          _setButtonStyle(16)
+                                          _SetButtonStyle(16)
 
     $aCustomButtonSelectAll[$eHandle]   = GUICtrlCreateLabel($aCustomButtonSelectAll[$eTitle], $aCustomButtonSelectAll[$eXPosition], $aCustomButtonSelectAll[$eYPosition], $aCustomButtonSelectAll[$eWidth], $aCustomButtonSelectAll[$eHeight])
-                                          _setButtonStyle(12)
+                                          _SetButtonStyle(12)
 
     $aCustomButtonUnselectAll[$eHandle] = GUICtrlCreateLabel($aCustomButtonUnselectAll[$eTitle], $aCustomButtonUnselectAll[$eXPosition], $aCustomButtonUnselectAll[$eYPosition], $aCustomButtonUnselectAll[$eWidth], $aCustomButtonUnselectAll[$eHeight])
-                                          _setButtonStyle(23)
+                                          _SetButtonStyle(23)
 
-    _createExecutionIndicator($aIcon[$eSum], $iCount, 130, 0x000000)
-    _createExecutionIndicator($aIcon[$eSuccess], $iSuccessCounter, 180, $aColor[$eGreen])
-    _createExecutionIndicator($aIcon[$eFail], $iFailureCounter, 230, $aColor[$eRed])
-    _createExecutionIndicator($aIcon[$eNotExecuted], $iNoExecutionCounter, 280, $aColor[$eBlue])
+    _CreateExecutionIndicator($aIcon[$eSum], $iCount, 130, 0x000000)
+    _CreateExecutionIndicator($aIcon[$eSuccess], $iSuccessCounter, 180, $aColor[$eGreen])
+    _CreateExecutionIndicator($aIcon[$eFail], $iFailureCounter, 230, $aColor[$eRed])
+    _CreateExecutionIndicator($aIcon[$eNotExecuted], $iNoExecutionCounter, 280, $aColor[$eBlue])
 EndFunc
 
-Func _fillTableOfCheckboxesData($iControlId, $sCheckboxLevelName, $sFeatureFilePath)
+Func _FillTableOfCheckboxesData($iControlId, $sCheckboxLevelName, $sFeatureFilePath)
     Local $sScenarioName = GUICtrlRead($iControlId, 1)
     _ArrayAdd($aTableOfCheckboxesData, $iControlId & '|' & $sCheckboxLevelName & '|' & $GUI_UNCHECKED & '|' & $sScenarioName & '|' & $sFeatureFilePath)
 EndFunc
 
-Func _createHorizontalLine($iY)
+Func _CreateHorizontalLine($iY)
     GUICtrlCreateLabel('', 14, $iY, $aGui[$eWidth] - 45, 1)
     GUICtrlSetBkColor(-1, $aColor[$eGray])
 EndFunc
 
-Func _createScenarioRunIndicator($sSign, $iY, $vColor)
+Func _CreateScenarioRunIndicator($sSign, $iY, $vColor)
     GUICtrlCreateLabel($sSign, 32, $iY + 2)
     GUICtrlSetFont(-1, 11)
     GUICtrlSetColor(-1, $vColor)
 EndFunc
 
-Func _createScenarioDuration($i, $iY)
+Func _CreateScenarioDuration($i, $iY)
     GUICtrlCreateLabel($aIcon[$eClock], $aGui[$eWidth] - 96, $iY + 2, Default, Default)
     GUICtrlSetFont(-1, 11)
 
     GUICtrlCreateLabel($i & ' sec', $aGui[$eWidth] - 80, $iY + 4, Default, Default)
 EndFunc
 
-Func _setButtonStyle($iFontSize)
+Func _SetButtonStyle($iFontSize)
     GUICtrlSetFont(-1, $iFontSize)
     GUICtrlSetBkColor(-1, $aColor[$eGray])
 
-    _setHandCursor()
+    _SetHandCursor()
 EndFunc
 
-Func _setHandCursor()
+Func _SetHandCursor()
     GUICtrlSetCursor(-1, 0)
 EndFunc
 
-Func _createExecutionIndicator($sSign, $sText, $iX, $vColor)
+Func _CreateExecutionIndicator($sSign, $sText, $iX, $vColor)
     GUICtrlCreateLabel($sSign, $iX, 14)
     GUICtrlSetFont(-1, 11)
     GUICtrlSetColor(-1, $vColor)

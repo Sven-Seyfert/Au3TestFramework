@@ -1,38 +1,38 @@
-Func _createFeatureTemplateFile()
-    Local $sFeatureName         = _getFeatureName()
-    Local $sFeatureFileTemplate = _getFeatureFileTemplate($sFeatureName)
+Func _CreateFeatureTemplateFile()
+    Local $sFeatureName         = _GetFeatureName()
+    Local $sFeatureFileTemplate = _GetFeatureFileTemplate($sFeatureName)
 
     Local Const $iStripAllSpaces = 8
 
     $sFeatureName = StringStripWS($sFeatureName, $iStripAllSpaces)
 
     If @Compiled Then
-        _writeFile('..\src\Specification\Features\' & $sFeatureName & '.feature', $sFeatureFileTemplate)
+        _WriteFile('..\src\Specification\Features\' & $sFeatureName & '.feature', $sFeatureFileTemplate)
     EndIf
 
     If Not @Compiled Then
-        _writeFile('..\Features\' & $sFeatureName & '.feature', $sFeatureFileTemplate)
+        _WriteFile('..\Features\' & $sFeatureName & '.feature', $sFeatureFileTemplate)
     EndIf
 
-    _exit($aGui[$eHandle])
+    _Exit($aGui[$eHandle])
 EndFunc
 
-Func _getFeatureName()
-    _showGui()
+Func _GetFeatureName()
+    _ShowGui()
 
-    AdlibRegister('_hoverActions', 150)
+    AdlibRegister('_HoverActions', 150)
 
-    Return _getGuiInput()
+    Return _GetGuiInput()
 EndFunc
 
-Func _getGuiInput()
+Func _GetGuiInput()
     While True
         Switch GUIGetMsg()
             Case $aCloseIcon[$eBackground]
-                _exit($aGui[$eHandle])
+                _Exit($aGui[$eHandle])
 
             Case $aThemeIcon[$eBackground]
-                _guiApplyTheme()
+                _GuiApplyTheme()
 
             Case $aButtonAdd[$eBackground]
                 Local $sInput = GUICtrlRead($aInputFeatureName[$eInput])
@@ -43,7 +43,7 @@ Func _getGuiInput()
     Return _StringProper($sInput)
 EndFunc
 
-Func _getFeatureFileTemplate($sFeatureName)
+Func _GetFeatureFileTemplate($sFeatureName)
     Return _
         'Feature: ' & $sFeatureName & @CRLF & _
         '    As Software Test Engineer,' & @CRLF & _
@@ -69,16 +69,16 @@ Func _getFeatureFileTemplate($sFeatureName)
         '    Then the login was successful'
 EndFunc
 
-Func _writeFile($sFile, $sText)
+Func _WriteFile($sFile, $sText)
     Local Const $iWriteModeCreatePathUtf8 = 2 + 8 + 256
     Local $hFile = FileOpen($sFile, $iWriteModeCreatePathUtf8)
     FileWrite($hFile, $sText)
     FileClose($hFile)
 EndFunc
 
-Func _exit($hGui)
-    AdlibUnRegister('_hoverActions')
-    _guiFadeOut($hGui)
+Func _Exit($hGui)
+    AdlibUnRegister('_HoverActions')
+    _GuiFadeOut($hGui)
     GUIDelete($hGui)
 
     Exit

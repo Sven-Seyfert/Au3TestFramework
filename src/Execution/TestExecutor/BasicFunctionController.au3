@@ -1,4 +1,4 @@
-Func _stringProperWithSpaces($sString)
+Func _StringProperWithSpaces($sString)
     Local $sCharacter          = ''
     Local $sProperString       = ''
     Local $iCharactersCount    = StringLen($sString)
@@ -16,19 +16,19 @@ Func _stringProperWithSpaces($sString)
     Return StringTrimLeft($sProperString, 1)
 EndFunc
 
-Func _getJustFileName($sFilePath)
+Func _GetJustFileName($sFilePath)
     Return StringRegExpReplace($sFilePath, '(.+?)\\', '', 0)
 EndFunc
 
-Func _getCount($aList)
+Func _GetCount($aList)
     Return UBound($aList) - 1
 EndFunc
 
-Func _getFileContentAsList($sFileContent)
-    Return StringSplit(_getFileContent($sFileContent), @LF, 1)
+Func _GetFileContentAsList($sFileContent)
+    Return StringSplit(_GetFileContent($sFileContent), @LF, 1)
 EndFunc
 
-Func _getFileContent($sFile)
+Func _GetFileContent($sFile)
     Local Const $iUtf8WithoutBomMode = 256
 
     Local $hFile        = FileOpen($sFile, $iUtf8WithoutBomMode)
@@ -38,7 +38,7 @@ Func _getFileContent($sFile)
     Return $sFileContent
 EndFunc
 
-Func _writeFile($sFile, $sText)
+Func _WriteFile($sFile, $sText)
     Local Const $iUtf8WithoutBomAndOverwriteCreationMode = 256 + 2 + 8
 
     Local $hFile = FileOpen($sFile, $iUtf8WithoutBomAndOverwriteCreationMode)
@@ -46,7 +46,7 @@ Func _writeFile($sFile, $sText)
     FileClose($hFile)
 EndFunc
 
-Func _appendToFile($sFile, $sText)
+Func _AppendToFile($sFile, $sText)
     Local Const $iUtf8WithoutBomAndAppendMode = 256 + 1
 
     Local $hFile = FileOpen($sFile, $iUtf8WithoutBomAndAppendMode)

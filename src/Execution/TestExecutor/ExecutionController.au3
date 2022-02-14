@@ -1,7 +1,7 @@
-Func _executeScenarios()
-    $aTableOfCheckboxesData = _setCheckboxesState($aTableOfCheckboxesData)
+Func _ExecuteScenarios()
+    $aTableOfCheckboxesData = _SetCheckboxesState($aTableOfCheckboxesData)
 
-    Local $aTableOfSelectedScenarios = _getSelectedScenarios($aTableOfCheckboxesData)
+    Local $aTableOfSelectedScenarios = _GetSelectedScenarios($aTableOfCheckboxesData)
 
     If UBound($aTableOfSelectedScenarios) == 0 Then
         MsgBox(48, $aTexts[$eMessageTitleNothingChosen], $aTexts[$eMessageNoScenarioChosen])
@@ -11,13 +11,13 @@ Func _executeScenarios()
 
     _ArrayDisplay($aTableOfSelectedScenarios, 2)
 
-    _includeStepFiles()
+    _IncludeStepFiles()
 
     ;~ TODO
 EndFunc
 
-Func _includeStepFiles()
-    Local $aStepFileList = _getListOfFiles('Steps', '*Steps.au3')
+Func _IncludeStepFiles()
+    Local $aStepFileList = _GetListOfFiles('Steps', '*Steps.au3')
 
     If Not IsArray($aStepFileList) Then
         MsgBox(48, $aTexts[$eMessageTitleNoStepFiles], $aTexts[$eMessageNoStepFiles] & @CRLF & @CRLF & _
@@ -26,9 +26,9 @@ Func _includeStepFiles()
         Return
     EndIf
 
-    _writeFile($sIncludeFileOfScenarioSteps, '')
+    _WriteFile($sIncludeFileOfScenarioSteps, '')
 
-    For $i = 1 To _getCount($aStepFileList) Step 1
-        _appendToFile($sIncludeFileOfScenarioSteps, '#include "' & $aStepFileList[$i] & '"' & @CRLF )
+    For $i = 1 To _GetCount($aStepFileList) Step 1
+        _AppendToFile($sIncludeFileOfScenarioSteps, '#include "' & $aStepFileList[$i] & '"' & @CRLF )
     Next
 EndFunc

@@ -1,9 +1,9 @@
 ; compiler information for AutoIt
 #pragma compile(CompanyName, © SOLVE SMART)
-#pragma compile(FileVersion, 0.16.0)
+#pragma compile(FileVersion, 0.17.0)
 #pragma compile(LegalCopyright, © Sven Seyfert)
 #pragma compile(ProductName, StepsGenerator)
-#pragma compile(ProductVersion, 0.16.0 - 2022-02-10)
+#pragma compile(ProductVersion, 0.17.0 - 2022-02-14)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\..\..\media\favicon.ico
@@ -37,5 +37,5 @@ If $aInst[0][0] > 1 Then Exit
 
 
 ; processing -------------------------------------------------------------------
-_createFilesWithStepsWrapperFunctions()
-_checkForDuplicateScenarioSteps()
+_CreateFilesWithStepsWrapperFunctions()
+_CheckForDuplicateScenarioSteps()

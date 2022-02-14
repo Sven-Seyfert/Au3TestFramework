@@ -1,4 +1,4 @@
-Func _initializeGuiScroll()
+Func _InitializeGuiScroll()
     Local Const $iHorizontal = 0
     Local Const $iVertical   = 1
 
@@ -6,32 +6,32 @@ Func _initializeGuiScroll()
     _GUIScroll_Init($aGui[$eHandle], $iVertical, 1)
 EndFunc
 
-Func _waitForGuiEvent()
+Func _WaitForGuiEvent()
     GUISetState(@SW_SHOW, $aGui[$eHandle])
 
     While True
         Switch GUIGetMsg()
             Case $GUI_EVENT_CLOSE
                 GUIDelete($aGui[$eHandle])
-                _writeFile($sIncludeFileOfScenarioSteps, '; temporary dummy text')
+                _WriteFile($sIncludeFileOfScenarioSteps, '; temporary dummy text')
                 Exit
 
             Case $GUI_EVENT_PRIMARYUP
-                _selectOrUnselectScenarioCheckboxes()
+                _SelectOrUnselectScenarioCheckboxes()
 
             Case $aCustomButtonRun[$eHandle]
-                _executeScenarios()
+                _ExecuteScenarios()
 
             Case $aCustomButtonSelectAll[$eHandle]
-                _selectAllScenarios()
+                _SelectAllScenarios()
 
             Case $aCustomButtonUnselectAll[$eHandle]
-                _unselectAllScenarios()
+                _UnselectAllScenarios()
         EndSwitch
     WEnd
 EndFunc
 
-Func _getScenarioCountOfTheFeatureFile($i, $iCount, $aTable)
+Func _GetScenarioCountOfTheFeatureFile($i, $iCount, $aTable)
     Local $iScenarioCounter = 1
 
     For $j = 1 To $iCount Step 1
@@ -48,26 +48,26 @@ Func _getScenarioCountOfTheFeatureFile($i, $iCount, $aTable)
     Return $iScenarioCounter
 EndFunc
 
-Func _selectOrUnselectScenarioCheckboxes()
+Func _SelectOrUnselectScenarioCheckboxes()
     Local $aTableOfCheckboxesDataBefore = $aTableOfCheckboxesData
 
-    $aTableOfCheckboxesData = _setCheckboxesState($aTableOfCheckboxesData)
+    $aTableOfCheckboxesData = _SetCheckboxesState($aTableOfCheckboxesData)
 
-    Local $iCount = _getCount($aTableOfCheckboxesData)
+    Local $iCount = _GetCount($aTableOfCheckboxesData)
 
     For $i = 0 To $iCount Step 1
         Local $iCheckboxStateBefore = $aTableOfCheckboxesDataBefore[$i][2]
         Local $iCheckboxState       = $aTableOfCheckboxesData[$i][2]
 
         If $iCheckboxStateBefore <> $iCheckboxState Then
-            _selectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTableOfCheckboxesData)
-            _unselectScenarioCheckboxesIfFeatureIsUnchecked($i, $iCount, $aTableOfCheckboxesData)
+            _SelectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTableOfCheckboxesData)
+            _UnselectScenarioCheckboxesIfFeatureIsUnchecked($i, $iCount, $aTableOfCheckboxesData)
         EndIf
     Next
 EndFunc
 
-Func _setCheckboxesState($aTable)
-    For $i = 0 To _getCount($aTable) Step 1
+Func _SetCheckboxesState($aTable)
+    For $i = 0 To _GetCount($aTable) Step 1
         Local $iCheckboxId = $aTable[$i][0]
 
         $aTable[$i][2] = GUICtrlRead($iCheckboxId)
@@ -76,7 +76,7 @@ Func _setCheckboxesState($aTable)
     Return $aTable
 EndFunc
 
-Func _selectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTable, $iState = $GUI_CHECKED)
+Func _SelectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTable, $iState = $GUI_CHECKED)
     Local $sCheckboxCategory = $aTable[$i][1]
     Local $iCheckboxState    = $aTable[$i][2]
 
@@ -91,14 +91,14 @@ Func _selectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTable, $iState =
 
 EndFunc
 
-Func _unselectScenarioCheckboxesIfFeatureIsUnchecked($i, $iCount, $aTable)
-    _selectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTable, $GUI_UNCHECKED)
+Func _UnselectScenarioCheckboxesIfFeatureIsUnchecked($i, $iCount, $aTable)
+    _SelectScenarioCheckboxesIfFeatureIsChecked($i, $iCount, $aTable, $GUI_UNCHECKED)
 EndFunc
 
-Func _getSelectedScenarios($aTable)
+Func _GetSelectedScenarios($aTable)
     Local $aTableOfSelectedScenarios[0][5]
 
-    For $i = 0 To _getCount($aTable) Step 1
+    For $i = 0 To _GetCount($aTable) Step 1
         Local $iControlId        = $aTable[$i][0]
         Local $sCheckboxCategory = $aTable[$i][1]
         Local $iCheckboxState    = $aTable[$i][2]
@@ -116,14 +116,14 @@ Func _getSelectedScenarios($aTable)
     Return $aTableOfSelectedScenarios
 EndFunc
 
-Func _selectAllScenarios()
-    For $i = 0 To _getCount($aTableOfCheckboxesData) Step 1
+Func _SelectAllScenarios()
+    For $i = 0 To _GetCount($aTableOfCheckboxesData) Step 1
         GUICtrlSetState($aTableOfCheckboxesData[$i][0], $GUI_CHECKED)
     Next
 EndFunc
 
-Func _unselectAllScenarios()
-    For $i = 0 To _getCount($aTableOfCheckboxesData) Step 1
+Func _UnselectAllScenarios()
+    For $i = 0 To _GetCount($aTableOfCheckboxesData) Step 1
         GUICtrlSetState($aTableOfCheckboxesData[$i][0], $GUI_UNCHECKED)
     Next
 EndFunc

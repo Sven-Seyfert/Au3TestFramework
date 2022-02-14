@@ -1,9 +1,9 @@
 ; compiler information for AutoIt
 #pragma compile(CompanyName, © SOLVE SMART)
-#pragma compile(FileVersion, 0.16.0)
+#pragma compile(FileVersion, 0.17.0)
 #pragma compile(LegalCopyright, © Sven Seyfert)
 #pragma compile(ProductName, FormatBddTable)
-#pragma compile(ProductVersion, 0.16.0 - 2022-02-10)
+#pragma compile(ProductVersion, 0.17.0 - 2022-02-14)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #AutoIt3Wrapper_Icon=..\media\favicon.ico
@@ -28,28 +28,28 @@ If $aInst[0][0] > 1 Then Exit
 
 
 ; processing -------------------------------------------------------------------
-Global $sFormattedBddTable = _getFormattedBddTable()
+Global $sFormattedBddTable = _GetFormattedBddTable()
 ClipPut($sFormattedBddTable)
 
-Func _getFormattedBddTable()
-    Local $aBddTable = _getBddTable()
-          $aBddTable = _stripWhitespacesFromTable($aBddTable)
+Func _GetFormattedBddTable()
+    Local $aBddTable = _GetBddTable()
+          $aBddTable = _StripWhitespacesFromTable($aBddTable)
 
-    Local $iColumns  = _getColumnCount($aBddTable)
-          $aBddTable = _create2dArrayOfTable($aBddTable, $iColumns)
-          $aBddTable = _reformatColumnWidthInTable($aBddTable)
+    Local $iColumns  = _GetColumnCount($aBddTable)
+          $aBddTable = _Create2dArrayOfTable($aBddTable, $iColumns)
+          $aBddTable = _ReformatColumnWidthInTable($aBddTable)
 
-    Return _createTableStringOfArray($aBddTable)
+    Return _CreateTableStringOfArray($aBddTable)
 EndFunc
 
-Func _getBddTable()
+Func _GetBddTable()
     Local Const $iEntireDelimiter = 1
     Local $sBddTable = ClipGet()
 
     Return StringSplit($sBddTable, @CRLF, $iEntireDelimiter)
 EndFunc
 
-Func _stripWhitespacesFromTable($aTable, $sTableBorderCharacter = '|')
+Func _StripWhitespacesFromTable($aTable, $sTableBorderCharacter = '|')
     Local Const $iLeadingTrailingAndDoubleWhitespaces = 7
     Local $iRowCount = $aTable[0]
 
@@ -63,7 +63,7 @@ Func _stripWhitespacesFromTable($aTable, $sTableBorderCharacter = '|')
     Return $aTable
 EndFunc
 
-Func _getColumnCount($aTable)
+Func _GetColumnCount($aTable)
     Local $sFirstTableRow      = $aTable[1]
     Local $sTableRegExPattern  = '\|'
     Local $aPipesAsTableBorder = StringRegExp($sFirstTableRow, $sTableRegExPattern, 3)
@@ -71,7 +71,7 @@ Func _getColumnCount($aTable)
     Return UBound($aPipesAsTableBorder) - 1
 EndFunc
 
-Func _create2dArrayOfTable($aTable, $iCloumns)
+Func _Create2dArrayOfTable($aTable, $iCloumns)
     Local Const $iWithoutArrayCount = 2
     Local $iRowCount = $aTable[0]
     Local $aNewTable[$iRowCount + 1][$iCloumns]
@@ -79,7 +79,7 @@ Func _create2dArrayOfTable($aTable, $iCloumns)
 
     For $i = 1 To $iRowCount Step 1
         Local $aTableRowCells = StringSplit($aTable[$i], '|', $iWithoutArrayCount)
-              $aTableRowCells = _removeFirstAndLastElementFromArray($aTableRowCells)
+              $aTableRowCells = _RemoveFirstAndLastElementFromArray($aTableRowCells)
 
         Local $iTableCellsCount = UBound($aTableRowCells) - 1
 
@@ -92,7 +92,7 @@ Func _create2dArrayOfTable($aTable, $iCloumns)
     Return $aNewTable
 EndFunc
 
-Func _removeFirstAndLastElementFromArray($aArray)
+Func _RemoveFirstAndLastElementFromArray($aArray)
     Local $iRowCount = Ubound($aArray) - 1
 
     _ArrayDelete($aArray, $iRowCount)
@@ -101,12 +101,12 @@ Func _removeFirstAndLastElementFromArray($aArray)
     Return $aArray
 EndFunc
 
-Func _reformatColumnWidthInTable($aTable)
+Func _ReformatColumnWidthInTable($aTable)
     Local $iColumnCount = UBound($aTable, 2) - 1
 
     For $i = 0 To $iColumnCount Step 1
         Local $iRowCount        = $aTable[0][0]
-        Local $iMaxColumnLength = _getMaxColumnLength($aTable, $i, $iRowCount)
+        Local $iMaxColumnLength = _GetMaxColumnLength($aTable, $i, $iRowCount)
 
         For $j = 1 To $iRowCount Step 1
             Local $sTableCell         = $aTable[$j][$i]
@@ -119,7 +119,7 @@ Func _reformatColumnWidthInTable($aTable)
     Return $aTable
 EndFunc
 
-Func _getMaxColumnLength($aTable, $iColumn, $iRowCount)
+Func _GetMaxColumnLength($aTable, $iColumn, $iRowCount)
     Local $iMaxColumnLength = 0
 
     For $i = 1 To $iRowCount Step 1
@@ -134,7 +134,7 @@ Func _getMaxColumnLength($aTable, $iColumn, $iRowCount)
     Return $iMaxColumnLength
 EndFunc
 
-Func _createTableStringOfArray($aTable)
+Func _CreateTableStringOfArray($aTable)
     Local $sTableString = ''
     Local $iRowCount    = $aTable[0][0]
     Local $iColumnCount = UBound($aTable, 2) - 1
