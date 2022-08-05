@@ -11,6 +11,16 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 ## [Unreleased]
 
+## [0.18.0] - 2022-08-05
+
+### Added
+
+- Unreleased section to changelog file.
+
+### Changed
+
+- Project file structure to fit the default from Au3NewProject.
+
 ## [0.17.0] - 2022-02-14
 
 ### Changed
@@ -115,7 +125,8 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 - All repository data and dependencies (already added before in version v0.8.0).
 
-[Unreleased]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.17.0...HEAD
+[Unreleased]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.18.0...HEAD
+[0.18.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.17.0...v0.18.0
 [0.17.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.15.0...v0.16.0
 [0.15.0]: https://github.com/Sven-Seyfert/Au3TestFramework/compare/v0.14.0...v0.15.0
