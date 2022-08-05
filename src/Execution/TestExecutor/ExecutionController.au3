@@ -29,6 +29,6 @@ Func _IncludeStepFiles()
     _WriteFile($sIncludeFileOfScenarioSteps, '')
 
     For $i = 1 To _GetCount($aStepFileList) Step 1
-        _AppendToFile($sIncludeFileOfScenarioSteps, '#include "' & $aStepFileList[$i] & '"' & @CRLF )
+        _AppendToFile($sIncludeFileOfScenarioSteps, '#include "' & $aStepFileList[$i] & '"' & @CRLF)
     Next
 EndFunc
