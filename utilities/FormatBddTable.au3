@@ -6,7 +6,7 @@
 #pragma compile(ProductVersion, 0.17.0 - 2022-02-14)
 
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
-#AutoIt3Wrapper_Icon=..\media\favicon.ico
+#AutoIt3Wrapper_Icon=..\media\icons\favicon.ico
 #AutoIt3Wrapper_Outfile_x64=..\build\FormatBddTable.exe
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_UseX64=y
