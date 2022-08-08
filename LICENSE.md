@@ -2,12 +2,12 @@
 
 #### Copyright (c) 2022 Sven Seyfert
 
-| Permissions                                                                  | Conditions                                                                                 | Limitations                                                             |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| ![#3DC637](https://via.placeholder.com/8/3DC637/000000?text=+) &nbsp;Commercial use | ![#0099D6](https://via.placeholder.com/8/0099D6/000000?text=+) &nbsp;License and copyright notice | ![#C6403D](https://via.placeholder.com/8/C6403D/000000?text=+) &nbsp;Liability |
-| ![#3DC637](https://via.placeholder.com/8/3DC637/000000?text=+) &nbsp;Distribution   |                                                                                            | ![#C6403D](https://via.placeholder.com/8/C6403D/000000?text=+) &nbsp;Warranty  |
-| ![#3DC637](https://via.placeholder.com/8/3DC637/000000?text=+) &nbsp;Modification   |                                                                                            |                                                                         |
-| ![#3DC637](https://via.placeholder.com/8/3DC637/000000?text=+) &nbsp;Private use    |                                                                                            |                                                                         |
+| 🟩 Permissions | 🟦 Conditions                | 🟥 Limitations |
+| :------------- | :--------------------------- | :------------ |
+| Commercial use | License and copyright notice | Liability     |
+| Distribution   |                              | Warranty      |
+| Modification   |                              |               |
+| Private use    |                              |               |
 
 #### License description
 
